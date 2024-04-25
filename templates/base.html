@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>{{tab_title}}</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>LCHS Movie SQLs Project</h1>
+        {% if not home %}               <!-- If not the home screen, add a link to return to the index.html page. -->
+            <section class="centered">
+                <a href="/">Return to Main Menu</a><br>
+            </section>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% if not home %}   <!-- Each render_template() function sets 'home' to be True or False. -->
+            {% if results is not string %} <!-- Display a table of the SELECT query results. -->
+                <section class="centered">
+                    <table>
+                        <tr>    <!-- 'tr' indicates a table row. 'th' is a heading cell. -->
+                            
+                            <!-- The 'selected_columns' key points to a list of column names. -->
+                            {% for column in session['selected_columns'] %}
+                                <th class="centered">{{column.strip()}}</th>
+                            {% endfor %}
+                        </tr>
+                        {% for row in results %}
+                            <tr>
+                                {% for entry in row %}
+                                    <td>{{entry}}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </section>
+                
+            <!-- Display simple feedback for all other SQL queries. -->
+            {% elif results.lower() == 'error' %}
+                <h3 class="{{results}}">Sorry, there was a syntax error in your query.</h3>
+            {% elif results.lower() == 'success' %}
+                <h3 class="{{results}}">Query successfully executed!</h3>
+            {% endif %}
+        {% endif %}
+    </body>
+</html>

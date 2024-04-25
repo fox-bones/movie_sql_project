@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class='centered'>
+    <form action="/delete" method="POST">
+        <h2>The DELETE query syntax:</h2>
+
+        <!-- Display the general syntax for a DELETE SQL query. -->
+        <p class="sample-syntax">
+            DELETE FROM {{session['table']}} WHERE <em>condition</em>
+        </p>
+
+        <!-- Show the column options for the selected table.
+            (This is helpful for writing a proper WHERE clause). -->
+        <ul>Column names for the <span class="table-col-names">{{session['table']}}</span> table:
+            {% for column in session['columns'] %}
+                <li class="table-col-names">{{column}}</li>
+            {% endfor %}
+        </ul>
+        <hr class="dashed-divider">
+        <h3>Enter your SQL query here:</h3>
+        <p>DELETE FROM <span class="table-col-names">{{session['table']}}</span></p>
+
+        <!-- Format the label and input box. Note the 'required' attribute. -->
+        <label>WHERE <input class="query-input" name="condition" type="text" placeholder="condition" required/></label>
+        
+        <section class="centered">
+            <button type="submit">Submit</button>
+            <button type="reset" class="clear">Clear</button>
+        </section>
+    </form>
+</section>
+<hr>
+<h2>{{sql_query}}</h2>
+{% endblock %}

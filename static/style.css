@@ -1,0 +1,102 @@
+h1 {
+    text-align: center;
+    text-decoration: underline;
+    margin: 5px;
+}
+
+h2, h3 {
+    text-align: center;
+    margin: 10px;
+}
+
+h4 {
+    color: brown;
+}
+
+form {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 4%;
+    margin: 10px;
+    padding: 10px;
+    font-size: 14pt;
+    text-align: left;
+    min-width: 40%;
+}
+
+label {
+    display: block;
+    margin: 5px;
+}
+
+option {
+    font-size: large;
+}
+
+p, li {
+    margin: 5px;
+}
+
+.query-input {
+    width: 80%;
+    margin: 5px;
+    padding: 5px;
+    font-size: larger;
+}
+
+a {
+    font-size: larger;
+}
+
+button {
+    color: white;
+    background-color: blue;
+    font-size: larger;
+    border-radius: 20%;
+    margin: 5px;
+}
+
+button.clear {
+    color: black;
+    background-color: palegoldenrod;
+}
+
+.centered {
+    text-align: center;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: purple;
+}
+
+.sample-syntax {
+    color: blue;
+    font-size: larger;
+    margin: 5px;
+    text-align: center;
+}
+
+.table-col-names {
+    color: green;
+    font-style: italic;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    margin: 5px;
+    text-align: left;
+}
+
+table {
+    display: inline-table;
+}
+
+.dashed-divider {
+    border: dashed gray 1px;
+}

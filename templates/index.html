@@ -1,0 +1,30 @@
+{% extends "base.html" %} <!-- The page title and <head> element are set up in base.html. -->
+
+{% block content %}
+<section class="centered">
+    <form action="/" method="POST">
+        <h2>Select the CRUD operation you would like to perform:</h2>
+
+        <!-- Loop through the query_types list to create the labels
+            and radio buttons for the form. -->
+        {% for type in query_types %}
+            <label><input type="radio" name="query_type" value={{type}} required> {{type}}</label>
+        {% endfor %}
+
+        <!-- Create the dropdown menu of table names. -->
+        <label>Table: 
+            <select name="table" required>
+                <option value="" disabled selected></option>
+                <option value="movies">Movies</option>
+                <option value="directors">Directors</option>
+            </select>
+        </label>
+
+        <!-- Add the Submit button. This sends the selected table and one radio button
+            value to the index() function in main.py. -->
+        <section class="centered">
+            <button type="submit">Submit</button>
+        </section>
+    </form>
+</section>
+{% endblock %}
